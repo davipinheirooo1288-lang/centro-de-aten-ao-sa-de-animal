@@ -171,8 +171,8 @@ function setupContactForm() {
   form.addEventListener("submit", event => {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(form));
-    if (!data.name || !data.animal || !data.message) {
-      status.textContent = "Preencha seu nome, o nome do animal e a mensagem.";
+    if (!data.name || !data.animal || !data.animalType || !data.message) {
+      status.textContent = "Preencha seu nome, o nome do animal, qual animal é e a mensagem.";
       return;
     }
 
@@ -180,6 +180,7 @@ function setupContactForm() {
       "Olá, CASA! Vim pelo site.",
       `Tutor: ${data.name}`,
       `Animal: ${data.animal}`,
+      `Tipo de animal: ${data.animalType}`,
       `Serviço: ${data.subject}`,
       `Mensagem: ${data.message}`
     ].join("\n");
