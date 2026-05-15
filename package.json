@@ -1,0 +1,17 @@
+{
+  "name": "centro-de-atencao-saude-animal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site premium da CASA - Centro de Atenção à Saúde Animal.",
+  "scripts": {
+    "dev": "node server.cjs",
+    "check": "node --check script.js && node --check server.cjs"
+  },
+  "keywords": [
+    "veterinaria",
+    "hospital-veterinario",
+    "fortaleza",
+    "site-estatico"
+  ],
+  "license": "UNLICENSED"
+}
