@@ -7,20 +7,11 @@ Site institucional premium para o Centro de Atenção à Saúde Animal - CASA.
 - `index.html`: estrutura da página.
 - `styles.css`: identidade visual, responsividade e animações.
 - `script.js`: serviços, carrossel de depoimentos, WhatsApp, formulário e popup.
-- `server.cjs`: servidor local simples para pré-visualização.
 - `casa 2.png`, `casa 3.png`, `casa logo.jpg`: imagens usadas no site.
 
 ## Rodar localmente
 
-```bash
-npm run dev
-```
-
-Depois abra:
-
-```text
-http://127.0.0.1:4173
-```
+Abra `index.html` diretamente no navegador ou use uma extensão de servidor estático, como Live Server.
 
 ## Validação rápida
 

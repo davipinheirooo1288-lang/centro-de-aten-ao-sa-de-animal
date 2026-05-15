@@ -4,8 +4,7 @@
   "private": true,
   "description": "Site premium da CASA - Centro de Atenção à Saúde Animal.",
   "scripts": {
-    "dev": "node server.cjs",
-    "check": "node --check script.js && node --check server.cjs"
+    "check": "node --check script.js"
   },
   "keywords": [
     "veterinaria",
