@@ -1,21 +1,18 @@
 const phoneNumber = "5585985412260";
 
 const services = [
-  ["Emergência 24h", "Atendimento imediato para casos que não podem esperar."],
-  ["Hospitalização", "Estrutura para acompanhamento contínuo e cuidado intensivo."],
-  ["Cardiologia", "Avaliação especializada para saúde do coração."],
+  ["Emergência 24h", "Atendimento rápido para casos que não podem esperar."],
+  ["Clínico geral", "Consulta, avaliação inicial e orientação para o tutor."],
+  ["Hospitalização", "Acompanhamento contínuo com equipe preparada."],
+  ["Cardiologia", "Avaliação especializada para a saúde do coração."],
   ["Dermatologia", "Cuidado para pele, alergias e coceiras persistentes."],
   ["Oftalmologia", "Diagnóstico e tratamento para a saúde dos olhos."],
-  ["Oncologia", "Atenção técnica e sensível em casos oncológicos."],
-  ["Ortopedia", "Avaliação de dor, fraturas, coluna e locomoção."],
-  ["Cirurgia veterinária", "Procedimentos cirúrgicos com preparo e acompanhamento."],
-  ["Raio-X", "Imagem diagnóstica para decisões mais seguras."],
-  ["Vacinação", "Proteção essencial com orientação profissional."],
-  ["Endoscopia e escopias", "Endoscopia, rinoscopia, colonoscopia e cistoscopia."],
-  ["Corpo estranho", "Atendimento para suspeitas de ingestão ou obstrução."],
-  ["Pássaros", "Cuidado especializado para aves."],
-  ["Acupuntura", "Terapia integrativa para dor e bem-estar."],
-  ["Cromoterapia", "Apoio integrativo dentro do plano de cuidado."]
+  ["Ortopedia", "Dor, fraturas, coluna e dificuldades de locomoção."],
+  ["Cirurgia geral", "Procedimentos com preparo, segurança e acompanhamento."],
+  ["Diagnóstico por imagem", "Raio-X, radiologia e apoio para decisões seguras."],
+  ["Animais silvestres", "Atendimento direcionado para aves e pets não convencionais."],
+  ["Odontologia", "Cuidado dentário, prevenção e procedimentos orais."],
+  ["Especialidades", "Oncologia, endoscopia, acupuntura e terapias integrativas."]
 ];
 
 const reviews = [
@@ -69,7 +66,7 @@ function populateServices() {
           <span>${String(index + 1).padStart(2, "0")}</span>
           <h3>${name}</h3>
           <p>${description}</p>
-          <button type="button" data-service-book="${name}">Agendar</button>
+          <button type="button" data-service-book="${name}">Selecionar serviço</button>
         </article>
       `
     )
@@ -199,29 +196,6 @@ function setupMenu() {
   });
 }
 
-function setupPopup() {
-  const popup = document.querySelector("[data-lead-popup]");
-  const closeButtons = document.querySelectorAll("[data-close-popup]");
-
-  function close() {
-    popup.classList.remove("is-open");
-    popup.setAttribute("aria-hidden", "true");
-    sessionStorage.setItem("casa-popup-closed", "true");
-  }
-
-  setTimeout(() => {
-    if (!sessionStorage.getItem("casa-popup-closed")) {
-      popup.classList.add("is-open");
-      popup.setAttribute("aria-hidden", "false");
-    }
-  }, 1800);
-
-  closeButtons.forEach(button => button.addEventListener("click", close));
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && popup.classList.contains("is-open")) close();
-  });
-}
-
 function setupTilt() {
   document.querySelectorAll(".tilt-card").forEach(card => {
     card.addEventListener("pointermove", event => {
@@ -244,6 +218,5 @@ setupWhatsappLinks();
 setupReviews();
 setupContactForm();
 setupMenu();
-setupPopup();
 setupTilt();
 observeAnimated();
