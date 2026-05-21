@@ -199,7 +199,7 @@ function setupMenu() {
 function setupImageLightbox() {
   const lightbox = document.querySelector("[data-image-lightbox]");
   const lightboxImage = document.querySelector("[data-lightbox-image]");
-  const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+  const lightboxCaption = document.querySelector(".lightbox-panel [data-lightbox-caption]");
   const triggers = document.querySelectorAll("[data-lightbox-src]");
   let lastTrigger = null;
 
