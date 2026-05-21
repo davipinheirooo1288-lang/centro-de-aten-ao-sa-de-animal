@@ -196,6 +196,45 @@ function setupMenu() {
   });
 }
 
+function setupImageLightbox() {
+  const lightbox = document.querySelector("[data-image-lightbox]");
+  const lightboxImage = document.querySelector("[data-lightbox-image]");
+  const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+  const triggers = document.querySelectorAll("[data-lightbox-src]");
+  let lastTrigger = null;
+
+  function open(trigger) {
+    lastTrigger = trigger;
+    lightboxImage.src = trigger.dataset.lightboxSrc;
+    lightboxImage.alt = trigger.dataset.lightboxAlt || "";
+    lightboxCaption.textContent = trigger.dataset.lightboxCaption || "";
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    document.querySelector("[data-lightbox-close]").focus();
+  }
+
+  function close() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    lightboxImage.removeAttribute("src");
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", () => open(trigger));
+  });
+
+  document.querySelectorAll("[data-lightbox-close]").forEach(button => {
+    button.addEventListener("click", close);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && lightbox.classList.contains("is-open")) close();
+  });
+}
+
 function setupTilt() {
   document.querySelectorAll(".tilt-card").forEach(card => {
     card.addEventListener("pointermove", event => {
@@ -218,5 +257,6 @@ setupWhatsappLinks();
 setupReviews();
 setupContactForm();
 setupMenu();
+setupImageLightbox();
 setupTilt();
 observeAnimated();

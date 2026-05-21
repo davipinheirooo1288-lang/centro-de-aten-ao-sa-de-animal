@@ -504,6 +504,73 @@ h2 {
   color: var(--muted);
 }
 
+.image-open {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: zoom-in;
+  display: block;
+  height: 100%;
+  inset: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-align: inherit;
+  width: 100%;
+}
+
+.image-open::after {
+  background: linear-gradient(180deg, rgba(6, 26, 61, 0) 48%, rgba(6, 26, 61, 0.42));
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 240ms var(--ease);
+}
+
+.image-open img {
+  transition: transform 520ms var(--ease), filter 520ms var(--ease);
+}
+
+.image-open:hover img,
+.image-open:focus-visible img {
+  filter: saturate(1.05);
+  transform: scale(1.035);
+}
+
+.image-open:hover::after,
+.image-open:focus-visible::after {
+  opacity: 1;
+}
+
+.image-zoom-label {
+  align-items: center;
+  background: rgba(255, 253, 246, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  bottom: 18px;
+  box-shadow: var(--shadow-soft);
+  color: var(--blue-950);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 950;
+  min-height: 38px;
+  opacity: 0;
+  padding: 0 14px;
+  position: absolute;
+  right: 18px;
+  transform: translateY(8px);
+  transition: opacity 240ms var(--ease), transform 240ms var(--ease);
+  z-index: 3;
+}
+
+.image-open:hover .image-zoom-label,
+.image-open:focus-visible .image-zoom-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .services-section {
   background:
     radial-gradient(circle at 10% 10%, rgba(255, 210, 28, 0.18), transparent 28%),
@@ -520,6 +587,7 @@ h2 {
 }
 
 .care-feature-media {
+  aspect-ratio: 1 / 1;
   border-radius: 18px;
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -532,6 +600,7 @@ h2 {
   inset: 0;
   pointer-events: none;
   position: absolute;
+  z-index: 2;
 }
 
 .care-feature-media img {
@@ -896,6 +965,89 @@ textarea:focus {
   width: 34px;
 }
 
+.image-lightbox {
+  align-items: center;
+  display: grid;
+  inset: 0;
+  opacity: 0;
+  padding: 28px;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 260ms var(--ease);
+  z-index: 80;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-backdrop {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(8, 98, 191, 0.28), transparent 38%),
+    rgba(4, 15, 34, 0.86);
+  border: 0;
+  inset: 0;
+  position: absolute;
+}
+
+.lightbox-panel {
+  display: grid;
+  justify-self: center;
+  margin: 0;
+  max-height: min(88vh, 900px);
+  max-width: min(92vw, 1120px);
+  opacity: 0;
+  position: relative;
+  transform: scale(0.96) translateY(16px);
+  transition: opacity 260ms var(--ease), transform 260ms var(--ease);
+  width: max-content;
+  z-index: 2;
+}
+
+.image-lightbox.is-open .lightbox-panel {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.lightbox-panel img {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.42);
+  display: block;
+  max-height: min(78vh, 780px);
+  max-width: min(92vw, 1120px);
+  object-fit: contain;
+}
+
+.lightbox-panel figcaption {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.45;
+  margin-top: 14px;
+  text-align: center;
+}
+
+.lightbox-close {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.96);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: var(--shadow-soft);
+  color: var(--blue-950);
+  display: inline-flex;
+  font-size: 1.7rem;
+  height: 44px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  width: 44px;
+  z-index: 3;
+}
+
 [data-animate] {
   opacity: 0;
   transform: translateY(26px);
@@ -1058,6 +1210,27 @@ textarea:focus {
   .floating-whatsapp {
     bottom: 14px;
     right: 14px;
+  }
+
+  .image-lightbox {
+    padding: 16px;
+  }
+
+  .lightbox-panel,
+  .lightbox-panel img {
+    max-width: calc(100vw - 32px);
+  }
+
+  .lightbox-close {
+    right: 8px;
+    top: 8px;
+  }
+
+  .image-zoom-label {
+    bottom: 12px;
+    opacity: 1;
+    right: 12px;
+    transform: none;
   }
 }
 

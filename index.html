@@ -110,7 +110,17 @@
         </div>
 
         <div class="about-visual tilt-card" data-animate>
-          <img src="sobre nos.png" alt="Fachada da clínica CASA com informações de atendimento" width="1178" height="1430" loading="lazy" />
+          <button
+            class="image-open"
+            type="button"
+            data-lightbox-src="sobre nos.png"
+            data-lightbox-alt="Fachada da clínica CASA com informações de atendimento"
+            data-lightbox-caption="Centro de Atenção à Saúde Animal - atendimento 24h em Fortaleza"
+            aria-label="Abrir foto do sobre nós em tamanho maior"
+          >
+            <img src="sobre nos.png" alt="Fachada da clínica CASA com informações de atendimento" width="1178" height="1430" loading="lazy" />
+            <span class="image-zoom-label">Ver imagem</span>
+          </button>
           <div class="about-note">
             <strong>24h</strong>
             <span>cuidado contínuo em Cidade dos Funcionários</span>
@@ -120,7 +130,17 @@
 
       <section class="care-feature" aria-label="Equipe e estrutura CASA">
         <div class="care-feature-media" data-animate>
-          <img src="ChatGPT Image 19 de mai. de 2026, 08_16_49 (2).png" alt="Equipe veterinária CASA em ambiente de atendimento" width="1246" height="1246" loading="lazy" />
+          <button
+            class="image-open"
+            type="button"
+            data-lightbox-src="ChatGPT Image 19 de mai. de 2026, 08_16_49 (2).png"
+            data-lightbox-alt="Equipe veterinária CASA em ambiente de atendimento"
+            data-lightbox-caption="Equipe e estrutura preparada para atendimento veterinário"
+            aria-label="Abrir imagem da equipe em tamanho maior"
+          >
+            <img src="ChatGPT Image 19 de mai. de 2026, 08_16_49 (2).png" alt="Equipe veterinária CASA em ambiente de atendimento" width="1246" height="1246" loading="lazy" />
+            <span class="image-zoom-label">Ver imagem</span>
+          </button>
         </div>
         <div class="care-feature-copy" data-animate>
           <p class="section-kicker">Estrutura completa</p>
@@ -136,7 +156,17 @@
       <section class="section services-section" id="servicos">
         <div class="services-layout">
           <div class="services-photo tilt-card">
-            <img src="serviços.png" alt="Especialidades veterinárias da CASA" width="956" height="1691" loading="lazy" />
+            <button
+              class="image-open"
+              type="button"
+              data-lightbox-src="serviços.png"
+              data-lightbox-alt="Especialidades veterinárias da CASA"
+              data-lightbox-caption="Especialidades veterinárias disponíveis na CASA"
+              aria-label="Abrir imagem de serviços em tamanho maior"
+            >
+              <img src="serviços.png" alt="Especialidades veterinárias da CASA" width="956" height="1691" loading="lazy" />
+              <span class="image-zoom-label">Ver imagem</span>
+            </button>
           </div>
 
           <div class="services-content">
@@ -266,6 +296,15 @@
         />
       </svg>
     </a>
+
+    <div class="image-lightbox" data-image-lightbox aria-hidden="true">
+      <button class="lightbox-backdrop" type="button" aria-label="Fechar imagem" data-lightbox-close></button>
+      <figure class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+        <button class="lightbox-close" type="button" aria-label="Fechar imagem" data-lightbox-close>&times;</button>
+        <img data-lightbox-image src="" alt="" />
+        <figcaption data-lightbox-caption></figcaption>
+      </figure>
+    </div>
 
     <script src="script.js"></script>
   </body>
